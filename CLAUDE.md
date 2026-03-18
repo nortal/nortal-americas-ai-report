@@ -16,13 +16,13 @@ On your FIRST interaction in any new conversation, before doing anything else:
 
 1. Detect the platform (`uname` on macOS/Linux, or check for Windows paths)
 2. Check if the project decryption key exists:
-   - macOS/Linux: `~/.keys/age/nortal-ai-report.txt`
-   - Windows: `%USERPROFILE%\.keys\age\nortal-ai-report.txt`
+   - macOS/Linux: `~/.keys/age/nortal-americas-ai-report.txt`
+   - Windows: `%USERPROFILE%\.keys\age\nortal-americas-ai-report.txt`
 3. If the key file is MISSING, immediately ask the user:
    > "I need the project decryption key to read the encrypted files. Please paste the AGE-SECRET-KEY-... string (get it from the project owner via a secure channel)."
 4. When the user provides the key, save it:
-   - macOS/Linux: `mkdir -p ~/.keys/age && echo "KEY" > ~/.keys/age/nortal-ai-report.txt && chmod 600 ~/.keys/age/nortal-ai-report.txt`
-   - Windows: `mkdir %USERPROFILE%\.keys\age 2>nul & echo KEY > %USERPROFILE%\.keys\age\nortal-ai-report.txt`
+   - macOS/Linux: `mkdir -p ~/.keys/age && echo "KEY" > ~/.keys/age/nortal-americas-ai-report.txt && chmod 600 ~/.keys/age/nortal-americas-ai-report.txt`
+   - Windows: `mkdir %USERPROFILE%\.keys\age 2>nul & echo KEY > %USERPROFILE%\.keys\age\nortal-americas-ai-report.txt`
 5. Then run `./scripts/bootstrap.sh` (macOS/Linux) to configure the git filters
 6. If the key file EXISTS, proceed normally — no need to ask
 
@@ -38,7 +38,7 @@ This project supports macOS, Linux, and Windows (via WSL or Git Bash).
 
 - **macOS/Linux**: All scripts work natively. Run `./scripts/bootstrap.sh`.
 - **Windows (WSL)**: Recommended. Install WSL, then use the Linux instructions.
-- **Windows (Git Bash)**: Scripts work in Git Bash. Install age from https://github.com/FiloSottile/age/releases. Key path: `%USERPROFILE%\.keys\age\nortal-ai-report.txt`.
+- **Windows (Git Bash)**: Scripts work in Git Bash. Install age from https://github.com/FiloSottile/age/releases. Key path: `%USERPROFILE%\.keys\age\nortal-americas-ai-report.txt`.
 - **Windows (native PowerShell)**: Not directly supported. Use WSL or Git Bash.
 
 When opening the report:
@@ -64,7 +64,7 @@ When opening the report:
 5. Sensitive files (`input/`, `output/`) are transparently encrypted via git smudge/clean filters
 6. Run `./scripts/bootstrap.sh` after cloning to configure decryption
 7. To add a file to encryption, add it to `.gitattributes` with `filter=age-crypt diff=age-crypt`
-8. The project decryption key is stored at `~/.keys/age/nortal-ai-report.txt`. If this file is missing and you need to read encrypted files, ask the user for the project decryption key (an `AGE-SECRET-KEY-...` string). Save it to that path with `chmod 600`.
+8. The project decryption key is stored at `~/.keys/age/nortal-americas-ai-report.txt`. If this file is missing and you need to read encrypted files, ask the user for the project decryption key (an `AGE-SECRET-KEY-...` string). Save it to that path with `chmod 600`.
 9. The `.age-project` file in the repo root identifies which key file to use — this enables multiple projects to use independent keys without conflicts
 
 ## Skills (Slash Commands)

@@ -57,12 +57,12 @@ these files appear as plaintext in your working tree but are stored as age-encry
 ciphertext in the remote repo.
 
 Each project has its own decryption key, identified by the `.age-project` file
-(this project: `nortal-ai-report`). The key is stored at
-`~/.keys/age/nortal-ai-report.txt`. This per-project approach prevents different
+(this project: `nortal-americas-ai-report`). The key is stored at
+`~/.keys/age/nortal-americas-ai-report.txt`. This per-project approach prevents different
 projects from overwriting each other's keys.
 
 **If the key file is missing**, ask the user for the project decryption key (an
-`AGE-SECRET-KEY-...` string) and save it to `~/.keys/age/nortal-ai-report.txt`
+`AGE-SECRET-KEY-...` string) and save it to `~/.keys/age/nortal-americas-ai-report.txt`
 with permissions `chmod 600`.
 
 The encrypted files are listed in `.gitattributes`.
@@ -75,4 +75,4 @@ The encrypted files are listed in `.gitattributes`.
 ```
 
 On Windows without WSL/Git Bash, Claude can manually set up the key file at
-`%USERPROFILE%\.keys\age\nortal-ai-report.txt` — see CLAUDE.md for details.
+`%USERPROFILE%\.keys\age\nortal-americas-ai-report.txt` — see CLAUDE.md for details.
