@@ -1,0 +1,7 @@
+# Sensitive files — encrypt transparently via age smudge/clean filters
+input/transcript.md filter=age-crypt diff=age-crypt
+input/notes.md filter=age-crypt diff=age-crypt
+input/initiative_list.md filter=age-crypt diff=age-crypt
+output/initiative_inventory.md filter=age-crypt diff=age-crypt
+output/classification_report.md filter=age-crypt diff=age-crypt
+output/report.html filter=age-crypt diff=age-crypt

@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./scripts/bootstrap.sh:*)",
+      "Bash(./scripts/install_hooks.sh:*)",
+      "Bash(./scripts/index/generate.sh:*)",
+      "Bash(./scripts/secrets/encrypt_all.sh:*)",
+      "Bash(./scripts/secrets/decrypt_all.sh:*)",
+      "Bash(./scripts/secrets/audit.sh:*)",
+      "Bash(./scripts/secrets/gen_keys.sh:*)",
+      "Bash(./scripts/filters/migrate-to-encrypted.sh:*)",
+      "Bash(age --version:*)",
+      "Bash(age-keygen:*)",
+      "Bash(git config*:*)",
+      "Bash(git --version:*)",
+      "Bash(git show*:*)",
+      "Bash(python3 --version:*)",
+      "Bash(chmod 600*:*)",
+      "Bash(mkdir -p*:*)",
+      "Bash(open *:*)",
+      "Bash(test -f*:*)",
+      "Bash(uname*:*)"
+    ],
+    "deny": [
+      "Read(secrets/plain/*)",
+      "Bash(cat secrets/plain/*)"
+    ]
+  }
+}
