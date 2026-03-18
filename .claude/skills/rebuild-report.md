@@ -19,12 +19,13 @@ Regenerate `output/report.html` from the markdown source files.
    **a. Home page** (`<div id="home" class="section active">`):
    - Brief paragraph explaining the report (24 initiatives, 13 dimensions)
    - **Dashboard section** with charts summarizing ALL 13 classification dimensions (A through M). Each chart is clickable and navigates to the corresponding dimension page via `showSection('dim-X')`. Count the actual initiative entries in each sub-category from the classification report.
-   - **Chart types supported:** Donut charts and funnel charts. A dropdown selector at the top of the dashboard lets the user switch between chart types. The selected type applies to all charts. Default is funnel.
+   - **Chart types supported:** Donut charts, funnel charts, and hidden (no charts). A dropdown selector at the top of the dashboard lets the user switch between chart types. The selected type applies to all charts. Default is funnel.
      - **Donut charts:** Rendered with inline SVG using `<circle>` elements with `stroke-dasharray`/`stroke-dashoffset`. Center number shows total. Each uses a consistent color palette from the report theme.
      - **Funnel charts:** Rendered with inline SVG or styled `<div>` elements. Each segment is a horizontal bar, widest at top (largest category), narrowing toward bottom (smallest). Segment labels and values are displayed inside or beside each bar. Use the same color palette as donuts.
    - **Legends:** Each chart has a legend showing segment labels with both count and percentage: `Label: N (XX%)`. Legends are **sorted from largest to smallest** percentage.
    - Chart titles and chart areas are wrapped in clickable elements with `onclick="showSection('dim-X')"`.
    - Charts are laid out in a responsive grid (4 columns on wide desktop, 3 on desktop, 2 on tablet, 1 on mobile) using CSS grid.
+   - When "Hidden" is selected, all chart cards are hidden, showing only the initiative table below.
    - The chart type dropdown and the `switchChartType()` JavaScript function handle showing/hiding the appropriate chart rendering for each card.
    - Below the dashboard: table of all 24 initiatives with columns: #, Initiative (clickable link), Description (from project-short subtitle in inventory), Owner
    - Initiative names are `<a class="init-link" href="#" onclick="goProject('proj-N')">Name</a>` links

@@ -100,5 +100,47 @@ if [ "$BLOCKED_COUNT" -gt 0 ]; then
     exit 1
 fi
 
+# Check that files marked for encryption in .gitattributes are actually encrypted
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+GITATTRIBUTES="$REPO_ROOT/.gitattributes"
+UNENCRYPTED=""
+UNENCRYPTED_COUNT=0
+
+if [ -f "$GITATTRIBUTES" ]; then
+    # Extract file paths that have filter=age-crypt
+    FILTERED_FILES=$(grep "filter=age-crypt" "$GITATTRIBUTES" | awk '{print $1}')
+
+    for file in $FILTERED_FILES; do
+        # Check if this file is staged
+        if echo "$STAGED_FILES" | grep -q "^${file}$"; then
+            # Check if the staged content starts with the age header
+            HEADER=$(git show ":${file}" 2>/dev/null | head -1)
+            if [ -n "$HEADER" ] && ! echo "$HEADER" | grep -q "^-----BEGIN AGE ENCRYPTED FILE-----"; then
+                UNENCRYPTED="$UNENCRYPTED\n  - $file"
+                UNENCRYPTED_COUNT=$((UNENCRYPTED_COUNT + 1))
+            fi
+        fi
+    done
+fi
+
+if [ "$UNENCRYPTED_COUNT" -gt 0 ]; then
+    printf "${RED}COMMIT BLOCKED${NC}\n"
+    echo ""
+    echo "The following $UNENCRYPTED_COUNT file(s) should be encrypted but are staged as plaintext:"
+    printf "$UNENCRYPTED\n"
+    echo ""
+    printf "${YELLOW}What to do:${NC}\n"
+    echo ""
+    echo "  1. Run bootstrap to configure the encryption filter:"
+    echo "     ./scripts/bootstrap.sh"
+    echo ""
+    echo "  2. Re-stage the files so the clean filter encrypts them:"
+    echo "     ./scripts/filters/migrate-to-encrypted.sh"
+    echo ""
+    echo "  3. Then try committing again."
+    echo ""
+    exit 1
+fi
+
 # All checks passed
 exit 0
