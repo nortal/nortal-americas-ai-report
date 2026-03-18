@@ -17,6 +17,7 @@ Regenerate `output/report.html` from the markdown source files.
 4. Generate a complete HTML file with these sections in order:
 
    **a. Home page** (`<div id="home" class="section active">`):
+   - A prominent warning banner (yellow background) noting: "If you are viewing this in Teams, the navigation links will not work correctly. Download the .html file and open it in your browser to navigate between sections."
    - Brief paragraph explaining the report (24 initiatives, 13 dimensions)
    - **Dashboard section** with charts summarizing ALL 13 classification dimensions (A through M). Each chart is clickable and navigates to the corresponding dimension page via `showSection('dim-X')`. Count the actual initiative entries in each sub-category from the classification report.
    - **Chart types supported:** Donut charts, funnel charts, and hidden (no charts). A dropdown selector at the top of the dashboard lets the user switch between chart types. The selected type applies to all charts. Default is funnel.
